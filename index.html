@@ -1,7 +1,8 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8"><title>Dead Physicist Society Calendar</title><style>
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&display=swap');
-body{background:#1C1C1C;font-family:'Crimson Text',serif;margin:0;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:100vh;color:#D4C4A8}
-#c{width:200px!important;background:#2D241E!important;border-radius:8px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.5)}
+body{background:#1C1C1C;font-family:'Crimson Text',serif;margin:0;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:100vh;color:#D4C4A8;padding:0 5px;box-sizing:border-box}
+/* O SEGREDO ESTÁ AQUI: max-width define o tamanho máximo, mas width: 100% deixa ele encolher */
+#c{width:100%!important;max-width:260px!important;background:#2D241E!important;border-radius:8px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.5);margin:0 auto}
 .h{background:#3C2F2F!important;color:#D4C4A8!important;padding:5px 12px!important;height:35px!important;display:flex;justify-content:space-between;align-items:center;text-transform:uppercase;font-weight:700;font-size:.8em}
 #p,#n{cursor:pointer;transition:.2s;user-select:none}#p:hover,#n:hover{color:#8C7355}
 table{width:100%;border-collapse:collapse}
@@ -11,7 +12,7 @@ td span{display:block;line-height:25px;font-size:.7em}
 td:not(.nil):hover{background:rgba(140,115,85,.2)!important;cursor:pointer;border-radius:4px}
 .hoje{background:#8C7355!important;color:#1C1C1C!important;font-weight:700;border-radius:4px}
 .nil{color:#5E5045!important;opacity:.4}
-footer{margin-top:15px}footer a{color:#8C7355;text-decoration:none;font-size:12px;opacity:.6;transition:.3s}footer a:hover{opacity:1;color:#D4C4A8}
+footer{margin-top:15px;text-align:center}footer a{color:#8C7355;text-decoration:none;font-size:12px;opacity:.6;transition:.3s}footer a:hover{opacity:1;color:#D4C4A8}
 </style></head><body><div id="c"></div><footer><a href="https://github.com/NicoleAvila">nikki.me</a></footer>
 <script>
 const ms=['January','February','March','April','May','June','July','August','September','October','November','December'],da=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
