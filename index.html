@@ -1,1 +1,24 @@
-
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Dead Physicist Society Calendar</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&display=swap');
+body{background:#1C1C1C;font-family:'Crimson Text',serif;margin:0;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:100vh;color:#D4C4A8}
+#c{width:200px!important;background:#2D241E!important;border-radius:8px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.5)}
+.h{background:#3C2F2F!important;color:#D4C4A8!important;padding:5px 12px!important;height:35px!important;display:flex;justify-content:space-between;align-items:center;text-transform:uppercase;font-weight:700;font-size:.8em}
+#p,#n{cursor:pointer;transition:.2s;user-select:none}#p:hover,#n:hover{color:#8C7355}
+table{width:100%;border-collapse:collapse}
+thead th{background:#4A3B33!important;color:#8C7355!important;padding:8px 0!important;font-size:9px;text-transform:uppercase}
+td{text-align:center;padding:1px!important;height:20px!important;color:#D4C4A8;transition:.2s;font-size:11px}
+td span{display:block;line-height:25px;font-size:.7em}
+td:not(.nil):hover{background:rgba(140,115,85,.2)!important;cursor:pointer;border-radius:4px}
+.hoje{background:#8C7355!important;color:#1C1C1C!important;font-weight:700;border-radius:4px}
+.nil{color:#5E5045!important;opacity:.4}
+footer{margin-top:15px}footer a{color:#8C7355;text-decoration:none;font-size:12px;opacity:.6;transition:.3s}footer a:hover{opacity:1;color:#D4C4A8}
+</style></head><body><div id="c"></div><footer><a href="https://github.com/NicoleAvila">nikki.me</a></footer>
+<script>
+const ms=['January','February','March','April','May','June','July','August','September','October','November','December'],da=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+function draw(w,d){w.innerHTML='';const c=document.createElement('div');c.innerHTML=`<div class="h"><span id="p">&lt;</span><span>${ms[d.getMonth()]} ${d.getFullYear()}</span><span id="n">&gt;</span></div><table><thead><tr>${da.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody></tbody></table>`;w.appendChild(c);
+document.getElementById('p').onclick=()=>draw(w,new Date(d.getFullYear(),d.getMonth()-1,1));
+document.getElementById('n').onclick=()=>draw(w,new Date(d.getFullYear(),d.getMonth()+1,1));
+const tb=c.querySelector('tbody'),im=new Date(d.getFullYear(),d.getMonth(),1).getDay(),nd=new Date(d.getFullYear(),d.getMonth()+1,0).getDate(),na=new Date(d.getFullYear(),d.getMonth(),0).getDate(),today=new Date();
+let day=1,nxt=1;for(let i=0;i<6;i++){const tr=document.createElement('tr');for(let j=0;j<7;j++){const td=document.createElement('td');const s=document.createElement('span');if(i==0&&j<im){td.className='nil';s.innerText=na-(im-j-1)}else if(day>nd){td.className='nil';s.innerText=nxt++}else{s.innerText=day;if(d.getMonth()==today.getMonth()&&d.getFullYear()==today.getFullYear()&&day==today.getDate())td.className='hoje';day++}td.appendChild(s);tr.appendChild(td)}tb.appendChild(tr);if(day>nd&&i>0)break}}
+draw(document.getElementById('c'),new Date());
+</script></body></html>
